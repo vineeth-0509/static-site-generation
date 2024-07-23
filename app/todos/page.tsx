@@ -1,10 +1,10 @@
 import Image from "next/image";
+import revalidate from "../lib/actions/action1";
 
 export default async function Home() {
-  const response= await fetch("https:sum-server.100xdevs.com/todos");
+  const response= await fetch("https:sum-server.100xdevs.com/todos",{next:{ tags:['todos']}});
   const data= await response.json();
-  console.log("data found from the backend server is")
-  console.log(JSON.stringify(data));
+    revalidate()
 
   return (
    <div>
